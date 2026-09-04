@@ -1,0 +1,137 @@
+{
+  "_comentari": "Generada per 06_generar_fichas.py. Els camps FONT:CATASTRO i FONT:CALCULAT venen de dades oficials. Els FONT:MANUAL estan buits a proposit: no hi ha cap font publica que els doni.",
+  "finca": {
+    "_font": "CATASTRO (GML INSPIRE + Consulta_DNPRC)",
+    "referencia_cadastral": "43060A01100034",
+    "nom_finca": "MAS DE KAYLA",
+    "terme_municipal": "FIGUEROLA DEL CAMP",
+    "comarca": "Alt Camp",
+    "provincia": "TARRAGONA",
+    "poligon": "11",
+    "parcela": "34",
+    "us_catastro": "Agrario",
+    "conreus_catastro": [
+      "IMPRODUCTIVO",
+      "LABOR O LABRADÍO SECANO",
+      "PINAR MADERABLE"
+    ],
+    "detall_conreus": [
+      {
+        "cultivo": "IMPRODUCTIVO",
+        "codigo": "I-",
+        "intensidad_productiva": "00",
+        "superficie_m2": 75
+      },
+      {
+        "cultivo": "IMPRODUCTIVO",
+        "codigo": "I-",
+        "intensidad_productiva": "00",
+        "superficie_m2": 22
+      },
+      {
+        "cultivo": "IMPRODUCTIVO",
+        "codigo": "I-",
+        "intensidad_productiva": "00",
+        "superficie_m2": 3892
+      },
+      {
+        "cultivo": "LABOR O LABRADÍO SECANO",
+        "codigo": "C-",
+        "intensidad_productiva": "02",
+        "superficie_m2": 14317
+      },
+      {
+        "cultivo": "PINAR MADERABLE",
+        "codigo": "MM",
+        "intensidad_productiva": "00",
+        "superficie_m2": 48320
+      },
+      {
+        "cultivo": "PINAR MADERABLE",
+        "codigo": "MM",
+        "intensidad_productiva": "00",
+        "superficie_m2": 15259
+      },
+      {
+        "cultivo": "IMPRODUCTIVO",
+        "codigo": "I-",
+        "intensidad_productiva": "00",
+        "superficie_m2": 65
+      },
+      {
+        "cultivo": "PINAR MADERABLE",
+        "codigo": "MM",
+        "intensidad_productiva": "00",
+        "superficie_m2": 136839
+      }
+    ],
+    "superficie_m2": 218882,
+    "superficie_ha": "21,8882",
+    "descripcio_catastro": "Polígono 11 Parcela 34 MAS DE KAYLA. FIGUEROLA DEL CAMP (TARRAGONA)",
+    "enllac_cartografia": "https://www1.sedecatastro.gob.es/Cartografia/mapa.aspx?del=43&mun=60&refcat=43060A01100034"
+  },
+  "situacio_dins_el_coto": {
+    "_font": "CALCULAT (la geometria de la finca toca el poligon del vedat)",
+    "inclosa_sencera": true,
+    "superficie_computada_m2": 218882,
+    "centroide_lat": 41.343481,
+    "centroide_lon": 1.233798
+  },
+  "limits": {
+    "_font": "CALCULAT (parcel-les veines segons la geometria del Catastro). S'identifiquen per referencia cadastral: el nom del propietari no es public.",
+    "nord": [
+      "43060A01100092",
+      "43060A01109002",
+      "43060A01100026",
+      "43060A01109012"
+    ],
+    "sud": [
+      "43060A01100041",
+      "43060A01109004",
+      "43060A01100040",
+      "43060A01009006"
+    ],
+    "est": [
+      "43060A01100078"
+    ],
+    "oest": [
+      "43060A01109007",
+      "43060A01100048",
+      "43060A01100059"
+    ]
+  },
+  "cedent": {
+    "_font": "MANUAL (el Catastro no publica la titularitat)",
+    "nom": "",
+    "tipus_document": "",
+    "adreca": ""
+  },
+  "cessionaria": {
+    "_font": "MANUAL (el client ha de facilitar les dades de l'associacio de cacadors)",
+    "nom": "Societat de Caçador X",
+    "nif": "NY67757882",
+    "adreca": "Avinguda del Fornas",
+    "registre": "Valls",
+    "num_registre": "2026",
+    "representant": "Gerard Sarda",
+    "dni_representant": "DNI 49319199T",
+    "carrec": "President"
+  },
+  "coto": {
+    "_font": "MANUAL",
+    "nom_coto": "T-0005"
+  },
+  "condicions": {
+    "_font": "MANUAL",
+    "poblacio": "Valls",
+    "data": "1 de setembre de 2026",
+    "durada_anys": "cinc (5) anys",
+    "temporada_inici": "2026-2027",
+    "temporada_fi": "2030-2031",
+    "preavis": "dos (2) mesos",
+    "contraprestacio": "a títol gratuit",
+    "forma_pagament": "anualment",
+    "mitja_pagament": "bizum",
+    "partit_judicial": "Valls"
+  }
+}

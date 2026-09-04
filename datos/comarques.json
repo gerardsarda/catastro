@@ -1,0 +1,7 @@
+{
+  "_comentari": "Municipi -> comarca. Clau: codi Catastro del municipi (NO INE, veure README). Els noms de municipi son els que retorna Consulta_DNPRC (majuscules, en castella). Si apareix un municipi nou al poligon, afegir-lo aqui i reexecutar el 06.",
+  "43060": { "municipi": "FIGUEROLA DEL CAMP",   "comarca": "Alt Camp" },
+  "43087": { "municipi": "MONTBLANC",            "comarca": "Conca de Barberà" },
+  "43110": { "municipi": "EL PLA DE SANTA MARIA", "comarca": "Alt Camp" },
+  "43163": { "municipi": "VALLS",                "comarca": "Alt Camp" }
+}

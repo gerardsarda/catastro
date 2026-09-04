@@ -1,0 +1,98 @@
+{
+  "_comentari": "Generada per 06_generar_fichas.py. Els camps FONT:CATASTRO i FONT:CALCULAT venen de dades oficials. Els FONT:MANUAL estan buits a proposit: no hi ha cap font publica que els doni.",
+  "finca": {
+    "_font": "CATASTRO (GML INSPIRE + Consulta_DNPRC)",
+    "referencia_cadastral": "43163A00200037",
+    "nom_finca": "FONT D'EN PERE",
+    "terme_municipal": "VALLS",
+    "comarca": "Alt Camp",
+    "provincia": "TARRAGONA",
+    "poligon": "2",
+    "parcela": "37",
+    "us_catastro": "Agrario",
+    "conreus_catastro": [
+      "PASTOS",
+      "PINAR MADERABLE"
+    ],
+    "detall_conreus": [
+      {
+        "cultivo": "PASTOS",
+        "codigo": "E-",
+        "intensidad_productiva": "00",
+        "superficie_m2": 3443
+      },
+      {
+        "cultivo": "PINAR MADERABLE",
+        "codigo": "MM",
+        "intensidad_productiva": "00",
+        "superficie_m2": 218872
+      }
+    ],
+    "superficie_m2": 222315,
+    "superficie_ha": "22,2315",
+    "descripcio_catastro": "Polígono 2 Parcela 37 FONT D'EN PERE. VALLS (TARRAGONA)",
+    "enllac_cartografia": "https://www1.sedecatastro.gob.es/Cartografia/mapa.aspx?del=43&mun=163&refcat=43163A00200037"
+  },
+  "situacio_dins_el_coto": {
+    "_font": "CALCULAT (la geometria de la finca toca el poligon del vedat)",
+    "inclosa_sencera": true,
+    "superficie_computada_m2": 222315,
+    "centroide_lat": 41.337683,
+    "centroide_lon": 1.218331
+  },
+  "limits": {
+    "_font": "CALCULAT (parcel-les veines segons la geometria del Catastro). S'identifiquen per referencia cadastral: el nom del propietari no es public.",
+    "nord": [
+      "43087A03500036",
+      "001700100CF57G",
+      "43163A00209002"
+    ],
+    "sud": [
+      "43163A00109001",
+      "43163A00200075",
+      "43163A00200074"
+    ],
+    "est": [
+      "43163A00200078",
+      "43163A00209006"
+    ],
+    "oest": [
+      "43163A00200076",
+      "43087A03500241"
+    ]
+  },
+  "cedent": {
+    "_font": "MANUAL (el Catastro no publica la titularitat)",
+    "nom": "",
+    "tipus_document": "",
+    "adreca": ""
+  },
+  "cessionaria": {
+    "_font": "MANUAL (el client ha de facilitar les dades de l'associacio de cacadors)",
+    "nom": "Societat de Caçador X",
+    "nif": "NY67757882",
+    "adreca": "Avinguda del Fornas",
+    "registre": "Valls",
+    "num_registre": "2026",
+    "representant": "Gerard Sarda",
+    "dni_representant": "DNI 49319199T",
+    "carrec": "President"
+  },
+  "coto": {
+    "_font": "MANUAL",
+    "nom_coto": "T-0005"
+  },
+  "condicions": {
+    "_font": "MANUAL",
+    "poblacio": "Valls",
+    "data": "1 de setembre de 2026",
+    "durada_anys": "cinc (5) anys",
+    "temporada_inici": "2026-2027",
+    "temporada_fi": "2030-2031",
+    "preavis": "dos (2) mesos",
+    "contraprestacio": "a títol gratuit",
+    "forma_pagament": "anualment",
+    "mitja_pagament": "bizum",
+    "partit_judicial": "Valls"
+  }
+}

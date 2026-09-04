@@ -1,0 +1,31 @@
+{
+  "_comentari": "Dades iguals per a TOTS els contractes. Cal omplir-les A MA amb les dades reals que doni el client abans de generar cap PDF. NO copiar valors d'exemple: si es queda buit, al PDF surt un espai en blanc; si s'inventa, surt malament.",
+  "cessionaria": {
+    "_font": "MANUAL (el client ha de facilitar les dades de l'associacio de cacadors)",
+    "nom": "Societat de Caçador X",
+    "nif": "NY67757882",
+    "adreca": "Avinguda del Fornas",
+    "registre": "Valls",
+    "num_registre": "2026",
+    "representant": "Gerard Sarda",
+    "dni_representant": "DNI 49319199T",
+    "carrec": "President"
+  },
+  "coto": {
+    "_font": "MANUAL",
+    "nom_coto": "T-0005"
+  },
+  "condicions": {
+    "_font": "MANUAL",
+    "poblacio": "Valls",
+    "data": "1 de setembre de 2026",
+    "durada_anys": "cinc (5) anys",
+    "temporada_inici": "2026-2027",
+    "temporada_fi": "2030-2031",
+    "preavis": "dos (2) mesos",
+    "contraprestacio": "a títol gratuit",
+    "forma_pagament": "anualment",
+    "mitja_pagament": "bizum",
+    "partit_judicial": "Valls"
+  }
+}

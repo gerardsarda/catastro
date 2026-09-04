@@ -1,0 +1,141 @@
+{
+  "_comentari": "Generada per 06_generar_fichas.py. Els camps FONT:CATASTRO i FONT:CALCULAT venen de dades oficials. Els FONT:MANUAL estan buits a proposit: no hi ha cap font publica que els doni.",
+  "finca": {
+    "_font": "CATASTRO (GML INSPIRE + Consulta_DNPRC)",
+    "referencia_cadastral": "43060A01400009",
+    "nom_finca": "AVELLANARS",
+    "terme_municipal": "FIGUEROLA DEL CAMP",
+    "comarca": "Alt Camp",
+    "provincia": "TARRAGONA",
+    "poligon": "14",
+    "parcela": "9",
+    "us_catastro": "Agrario",
+    "conreus_catastro": [
+      "LABOR O LABRADÍO SECANO",
+      "OLIVOS REGADÍO",
+      "IMPRODUCTIVO",
+      "PINAR MADERABLE",
+      "AVELLANOS SECANO",
+      "AVELLANO REGADÍO"
+    ],
+    "detall_conreus": [
+      {
+        "cultivo": "LABOR O LABRADÍO SECANO",
+        "codigo": "C-",
+        "intensidad_productiva": "02",
+        "superficie_m2": 26268
+      },
+      {
+        "cultivo": "OLIVOS REGADÍO",
+        "codigo": "OR",
+        "intensidad_productiva": "00",
+        "superficie_m2": 299
+      },
+      {
+        "cultivo": "IMPRODUCTIVO",
+        "codigo": "I-",
+        "intensidad_productiva": "00",
+        "superficie_m2": 51
+      },
+      {
+        "cultivo": "IMPRODUCTIVO",
+        "codigo": "I-",
+        "intensidad_productiva": "00",
+        "superficie_m2": 472
+      },
+      {
+        "cultivo": "OLIVOS REGADÍO",
+        "codigo": "OR",
+        "intensidad_productiva": "00",
+        "superficie_m2": 723
+      },
+      {
+        "cultivo": "PINAR MADERABLE",
+        "codigo": "MM",
+        "intensidad_productiva": "00",
+        "superficie_m2": 88020
+      },
+      {
+        "cultivo": "AVELLANOS SECANO",
+        "codigo": "AO",
+        "intensidad_productiva": "02",
+        "superficie_m2": 57525
+      },
+      {
+        "cultivo": "AVELLANO REGADÍO",
+        "codigo": "AV",
+        "intensidad_productiva": "01",
+        "superficie_m2": 11982
+      }
+    ],
+    "superficie_m2": 186881,
+    "superficie_ha": "18,6881",
+    "descripcio_catastro": "Polígono 14 Parcela 9 AVELLANARS. FIGUEROLA DEL CAMP (TARRAGONA)",
+    "enllac_cartografia": "https://www1.sedecatastro.gob.es/Cartografia/mapa.aspx?del=43&mun=60&refcat=43060A01400009"
+  },
+  "situacio_dins_el_coto": {
+    "_font": "CALCULAT (la geometria de la finca toca el poligon del vedat)",
+    "inclosa_sencera": true,
+    "superficie_computada_m2": 186881,
+    "centroide_lat": 41.357752,
+    "centroide_lon": 1.247138
+  },
+  "limits": {
+    "_font": "CALCULAT (parcel-les veines segons la geometria del Catastro). S'identifiquen per referencia cadastral: el nom del propietari no es public.",
+    "nord": [
+      "43060A01400014"
+    ],
+    "sud": [
+      "43060A00809016",
+      "43060A01009006",
+      "43060A00809001"
+    ],
+    "est": [
+      "43060A01400008",
+      "43060A01400022",
+      "43060A01400021",
+      "43060A01409002"
+    ],
+    "oest": [
+      "43060A01400012",
+      "43060A01400013",
+      "43060A01209005",
+      "43060A01400010",
+      "43060A01209002"
+    ]
+  },
+  "cedent": {
+    "_font": "MANUAL (el Catastro no publica la titularitat)",
+    "nom": "",
+    "tipus_document": "",
+    "adreca": ""
+  },
+  "cessionaria": {
+    "_font": "MANUAL (el client ha de facilitar les dades de l'associacio de cacadors)",
+    "nom": "Societat de Caçador X",
+    "nif": "NY67757882",
+    "adreca": "Avinguda del Fornas",
+    "registre": "Valls",
+    "num_registre": "2026",
+    "representant": "Gerard Sarda",
+    "dni_representant": "DNI 49319199T",
+    "carrec": "President"
+  },
+  "coto": {
+    "_font": "MANUAL",
+    "nom_coto": "T-0005"
+  },
+  "condicions": {
+    "_font": "MANUAL",
+    "poblacio": "Valls",
+    "data": "1 de setembre de 2026",
+    "durada_anys": "cinc (5) anys",
+    "temporada_inici": "2026-2027",
+    "temporada_fi": "2030-2031",
+    "preavis": "dos (2) mesos",
+    "contraprestacio": "a títol gratuit",
+    "forma_pagament": "anualment",
+    "mitja_pagament": "bizum",
+    "partit_judicial": "Valls"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "_comentari": "Un JSON per finca. Els camps marcats FONT:CATASTRO s'omplen sols. Els marcats FONT:MANUAL els has de demanar al client.",
+
+  "finca": {
+    "_font": "CATASTRO (Consulta_DNPRC + GML INSPIRE)",
+    "nom_finca": "ELS BOSCOS",
+    "terme_municipal": "Figuerola del Camp",
+    "comarca": "l'Alt Camp",
+    "superficie_ha": "0,8351",
+    "referencia_cadastral": "43060A00600107",
+    "poligon": "6",
+    "parcela": "107",
+    "us": "Agrari",
+    "conreu": "Ametller de regadiu",
+    "superficie_m2": 8351,
+    "enllac_cartografia": "https://www1.sedecatastro.gob.es/Cartografia/mapa.aspx?del=43&mun=60&refcat=43060A00600107"
+  },
+
+  "limits": {
+    "_font": "MANUAL (Catastro NO dona linderos en text; veure nota)",
+    "nord": "________________",
+    "sud": "________________",
+    "est": "________________",
+    "oest": "________________"
+  },
+
+  "cedent": {
+    "_font": "MANUAL (dades del propietari)",
+    "nom": "Josep Maria Ferrer i Solé",
+    "tipus_document": "DNI 39.876.543-K",
+    "adreca": "C/ Major 14, 43812 Figuerola del Camp (Tarragona)"
+  },
+
+  "cessionaria": {
+    "_font": "MANUAL (dades de l'associacio de cacadors, iguals per a tots els contractes)",
+    "nom": "Societat de Caçadors de Figuerola del Camp",
+    "nif": "G-43567890",
+    "adreca": "Plaça de l'Església 2, 43812 Figuerola del Camp (Tarragona)",
+    "registre": "Registre d'Associacions de la Generalitat de Catalunya",
+    "num_registre": "12.345-T",
+    "representant": "Marc Vidal i Roig",
+    "dni_representant": "DNI 39.111.222-M",
+    "carrec": "president"
+  },
+
+  "coto": {
+    "_font": "MANUAL",
+    "nom_coto": "T-10.011"
+  },
+
+  "condicions": {
+    "_font": "MANUAL",
+    "poblacio": "Figuerola del Camp",
+    "data": "2 de setembre de 2026",
+    "durada_anys": "5 anys",
+    "temporada_inici": "2026/2027",
+    "temporada_fi": "2030/2031",
+    "preavis": "3 mesos",
+    "contraprestacio": "a títol gratuït",
+    "forma_pagament": "no aplica",
+    "mitja_pagament": "no aplica",
+    "partit_judicial": "Valls"
+  }
+}

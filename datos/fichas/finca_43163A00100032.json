@@ -1,0 +1,188 @@
+{
+  "_comentari": "Generada per 06_generar_fichas.py. Els camps FONT:CATASTRO i FONT:CALCULAT venen de dades oficials. Els FONT:MANUAL estan buits a proposit: no hi ha cap font publica que els doni.",
+  "finca": {
+    "_font": "CATASTRO (GML INSPIRE + Consulta_DNPRC)",
+    "referencia_cadastral": "43163A00100032",
+    "nom_finca": "GUIXERES",
+    "terme_municipal": "VALLS",
+    "comarca": "Alt Camp",
+    "provincia": "TARRAGONA",
+    "poligon": "1",
+    "parcela": "32",
+    "us_catastro": "Agrario",
+    "conreus_catastro": [
+      "MATORRAL",
+      "PINAR MADERABLE",
+      "IMPRODUCTIVO"
+    ],
+    "detall_conreus": [
+      {
+        "cultivo": "MATORRAL",
+        "codigo": "MT",
+        "intensidad_productiva": "00",
+        "superficie_m2": 97405
+      },
+      {
+        "cultivo": "PINAR MADERABLE",
+        "codigo": "MM",
+        "intensidad_productiva": "00",
+        "superficie_m2": 149
+      },
+      {
+        "cultivo": "IMPRODUCTIVO",
+        "codigo": "I-",
+        "intensidad_productiva": "00",
+        "superficie_m2": 3340
+      },
+      {
+        "cultivo": "MATORRAL",
+        "codigo": "MT",
+        "intensidad_productiva": "00",
+        "superficie_m2": 81384
+      },
+      {
+        "cultivo": "MATORRAL",
+        "codigo": "MT",
+        "intensidad_productiva": "00",
+        "superficie_m2": 120866
+      },
+      {
+        "cultivo": "PINAR MADERABLE",
+        "codigo": "MM",
+        "intensidad_productiva": "00",
+        "superficie_m2": 115627
+      },
+      {
+        "cultivo": "MATORRAL",
+        "codigo": "MT",
+        "intensidad_productiva": "00",
+        "superficie_m2": 260771
+      },
+      {
+        "cultivo": "PINAR MADERABLE",
+        "codigo": "MM",
+        "intensidad_productiva": "00",
+        "superficie_m2": 17739
+      },
+      {
+        "cultivo": "PINAR MADERABLE",
+        "codigo": "MM",
+        "intensidad_productiva": "00",
+        "superficie_m2": 36652
+      },
+      {
+        "cultivo": "IMPRODUCTIVO",
+        "codigo": "I-",
+        "intensidad_productiva": "00",
+        "superficie_m2": 1096
+      },
+      {
+        "cultivo": "PINAR MADERABLE",
+        "codigo": "MM",
+        "intensidad_productiva": "00",
+        "superficie_m2": 48132
+      },
+      {
+        "cultivo": "MATORRAL",
+        "codigo": "MT",
+        "intensidad_productiva": "00",
+        "superficie_m2": 61955
+      },
+      {
+        "cultivo": "IMPRODUCTIVO",
+        "codigo": "I-",
+        "intensidad_productiva": "00",
+        "superficie_m2": 1439
+      }
+    ],
+    "superficie_m2": 846555,
+    "superficie_ha": "84,6555",
+    "descripcio_catastro": "Polígono 1 Parcela 32 GUIXERES. VALLS (TARRAGONA)",
+    "enllac_cartografia": "https://www1.sedecatastro.gob.es/Cartografia/mapa.aspx?del=43&mun=163&refcat=43163A00100032"
+  },
+  "situacio_dins_el_coto": {
+    "_font": "CALCULAT (la geometria de la finca toca el poligon del vedat)",
+    "inclosa_sencera": true,
+    "superficie_computada_m2": 846555,
+    "centroide_lat": 41.329561,
+    "centroide_lon": 1.207847
+  },
+  "limits": {
+    "_font": "CALCULAT (parcel-les veines segons la geometria del Catastro). S'identifiquen per referencia cadastral: el nom del propietari no es public.",
+    "nord": [
+      "43163A00100200",
+      "43087A03500246",
+      "43163A00100001"
+    ],
+    "sud": [
+      "43163A00100058",
+      "43163A00109005",
+      "43163A00109004",
+      "43163A00109003",
+      "43163A00100036",
+      "43163A00100031",
+      "43163A00100195",
+      "43163A00100055"
+    ],
+    "est": [
+      "43163A00100018",
+      "43163A00100198",
+      "43163A00100201",
+      "43163A00100005",
+      "43163A00100008",
+      "43163A00100034",
+      "43163A00100006",
+      "43163A00100002",
+      "43163A00109001",
+      "43163A00100197"
+    ],
+    "oest": [
+      "43163A00109006",
+      "43163A00100078",
+      "43163A00100079",
+      "43087A03500341",
+      "43087A03500340",
+      "43087A03500252",
+      "43087A03500251",
+      "43087A03500250",
+      "43163A00100204",
+      "43087A03500249",
+      "43087A03500248",
+      "43087A03500247"
+    ]
+  },
+  "cedent": {
+    "_font": "MANUAL (el Catastro no publica la titularitat)",
+    "nom": "",
+    "tipus_document": "",
+    "adreca": ""
+  },
+  "cessionaria": {
+    "_font": "MANUAL (el client ha de facilitar les dades de l'associacio de cacadors)",
+    "nom": "Societat de Caçador X",
+    "nif": "NY67757882",
+    "adreca": "Avinguda del Fornas",
+    "registre": "Valls",
+    "num_registre": "2026",
+    "representant": "Gerard Sarda",
+    "dni_representant": "DNI 49319199T",
+    "carrec": "President"
+  },
+  "coto": {
+    "_font": "MANUAL",
+    "nom_coto": "T-0005"
+  },
+  "condicions": {
+    "_font": "MANUAL",
+    "poblacio": "Valls",
+    "data": "1 de setembre de 2026",
+    "durada_anys": "cinc (5) anys",
+    "temporada_inici": "2026-2027",
+    "temporada_fi": "2030-2031",
+    "preavis": "dos (2) mesos",
+    "contraprestacio": "a títol gratuit",
+    "forma_pagament": "anualment",
+    "mitja_pagament": "bizum",
+    "partit_judicial": "Valls"
+  }
+}

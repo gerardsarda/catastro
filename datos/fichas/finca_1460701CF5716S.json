@@ -1,0 +1,108 @@
+{
+  "_comentari": "Generada per 06_generar_fichas.py. Els camps FONT:CATASTRO i FONT:CALCULAT venen de dades oficials. Els FONT:MANUAL estan buits a proposit: no hi ha cap font publica que els doni.",
+  "finca": {
+    "_font": "CATASTRO (GML INSPIRE + Consulta_DNPRC)",
+    "referencia_cadastral": "1460701CF5716S",
+    "nom_finca": "",
+    "terme_municipal": "VALLS",
+    "comarca": "Alt Camp",
+    "provincia": "TARRAGONA",
+    "poligon": "0",
+    "parcela": "0",
+    "us_catastro": "",
+    "conreus_catastro": [],
+    "detall_conreus": [],
+    "superficie_m2": 464317,
+    "superficie_ha": "46,4317",
+    "descripcio_catastro": "",
+    "enllac_cartografia": "https://www1.sedecatastro.gob.es/Cartografia/mapa.aspx?del=43&mun=163&refcat=1460701CF5716S"
+  },
+  "situacio_dins_el_coto": {
+    "_font": "CALCULAT (la geometria de la finca toca el poligon del vedat)",
+    "inclosa_sencera": true,
+    "superficie_computada_m2": 464317,
+    "centroide_lat": 41.322144,
+    "centroide_lon": 1.224668
+  },
+  "limits": {
+    "_font": "CALCULAT (parcel-les veines segons la geometria del Catastro). S'identifiquen per referencia cadastral: el nom del propietari no es public.",
+    "nord": [
+      "43163A02400010",
+      "43163A02400015",
+      "43163A02400009",
+      "43163A02409014",
+      "43163A02400016",
+      "43163A02400021",
+      "43163A02400022",
+      "43163A02400020",
+      "43163A02409013"
+    ],
+    "sud": [
+      "43163A02400365",
+      "43163A02409016",
+      "43163A02400125",
+      "43163A02400124",
+      "43163A02400393",
+      "43163A02400126"
+    ],
+    "est": [
+      "43163A02409003",
+      "43163A02400071",
+      "43163A02400055",
+      "43163A02409009",
+      "43163A02400050",
+      "43163A02400385",
+      "43163A02400384",
+      "43163A02409068",
+      "43163A02400383",
+      "43163A02409070",
+      "43163A02400031",
+      "43163A02409008"
+    ],
+    "oest": [
+      "43163A02400057",
+      "43163A02400058",
+      "43163A02400068",
+      "43163A02400123",
+      "43163A02400392",
+      "43163A02400008",
+      "43163A02400069",
+      "43163A02400070",
+      "43163A02409015"
+    ]
+  },
+  "cedent": {
+    "_font": "MANUAL (el Catastro no publica la titularitat)",
+    "nom": "",
+    "tipus_document": "",
+    "adreca": ""
+  },
+  "cessionaria": {
+    "_font": "MANUAL (el client ha de facilitar les dades de l'associacio de cacadors)",
+    "nom": "Societat de Caçador X",
+    "nif": "NY67757882",
+    "adreca": "Avinguda del Fornas",
+    "registre": "Valls",
+    "num_registre": "2026",
+    "representant": "Gerard Sarda",
+    "dni_representant": "DNI 49319199T",
+    "carrec": "President"
+  },
+  "coto": {
+    "_font": "MANUAL",
+    "nom_coto": "T-0005"
+  },
+  "condicions": {
+    "_font": "MANUAL",
+    "poblacio": "Valls",
+    "data": "1 de setembre de 2026",
+    "durada_anys": "cinc (5) anys",
+    "temporada_inici": "2026-2027",
+    "temporada_fi": "2030-2031",
+    "preavis": "dos (2) mesos",
+    "contraprestacio": "a títol gratuit",
+    "forma_pagament": "anualment",
+    "mitja_pagament": "bizum",
+    "partit_judicial": "Valls"
+  }
+}

@@ -1,0 +1,21 @@
+# Dependencies de l'app de generacio de contractes (app.py)
+# Instal-lacio:  pip install -r requirements.txt
+
+# --- Interficie ---
+streamlit>=1.30
+streamlit-folium>=0.20
+folium>=0.15
+
+# --- Mapes i geometria (scripts 04 i 06) ---
+shapely>=2.0
+pyproj>=3.5
+lxml>=4.9
+
+# --- Taules de resultats ---
+pandas>=2.0
+
+# --- PDF del contracte (script 03) ---
+reportlab>=4.0
+
+# --- API del Cadastre (scripts/catastro_api.py) ---
+requests>=2.31

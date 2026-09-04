@@ -1,0 +1,26 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+
+# --- Entorns virtuals ---
+.venv/
+venv/
+env/
+.env
+
+# --- Dades crues redundants ---
+# Els .zip son la font; l'app llegeix els .gml ja extrets de datos_crudos/gml/
+datos_crudos/*.zip
+# Cache d'APIs (es regenera sol)
+datos_crudos/cache_*.json
+
+# --- Sortides generades pels scripts (es regeneren; l'app no les necessita per arrencar) ---
+salidas/
+
+# --- SO / editors ---
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
