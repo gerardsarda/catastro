@@ -382,6 +382,23 @@ def poligon_parcela_de_refcat(refcat):
     return "", ""
 
 
+def es_domini_public(refcat):
+    """True si la referència és una parcel·la de domini públic (sèrie 9000).
+
+    Al cadastre rústic, les parcel·les numerades 9000 o més no són finques
+    privades: són rius, barrancs, camins i carreteres (domini públic hidràulic
+    o viari). Entren al vedat perquè el toquen (LA REGLA), però no tenen
+    propietari que pugui signar com a cedent, així que per defecte NO generen
+    contracte. Es sap només amb la referència, sense cap consulta al Cadastre.
+    """
+    if not s04.es_rustica(refcat):
+        return False
+    try:
+        return int(refcat[9:14]) >= 9000
+    except (ValueError, IndexError):
+        return False
+
+
 def info_capcalera(f):
     """(municipi, nom_finca, polígon, parcel·la) per al títol del Pas 3.
 
@@ -707,17 +724,19 @@ with pas2:
                 st.session_state["zip_contractes"] = None
                 st.session_state["incidencies"] = []
                 st.session_state["pagina_pas3"] = 0
-                # Totes entren marcades: si toquen el poligon, hi son. Qui
-                # en vulgui treure alguna ho fa a ma al Pas 3. S'escriu tambe
-                # a l'estat del widget perque una casella ja dibuixada en un
-                # calcul anterior no es quedi com estava.
+                # Totes entren marcades si toquen el poligon (LA REGLA), EXCEPTE
+                # els dominis publics (rius, barrancs, camins, carreteres: serie
+                # 9000): no tenen propietari que firmi, aixi que entren
+                # desmarcats. Qui en vulgui treure o afegir cap ho fa a ma al
+                # Pas 3. S'escriu tambe a l'estat del widget perque una casella
+                # ja dibuixada en un calcul anterior no es quedi com estava.
                 cedents = st.session_state["cedents"]
                 for f in files:
                     c = cedents.setdefault(f["refcat"], {
                         "nom": "", "tipus_document": "",
                         "numero_document": "", "adreca": "",
                     })
-                    c["inclou"] = True
+                    c["inclou"] = not es_domini_public(f["refcat"])
                     st.session_state["inclou_{}".format(f["refcat"])] = c["inclou"]
                 st.rerun()
 
@@ -802,18 +821,25 @@ with pas3:
         def _desa_camp(refcat, camp, clau_widget):
             cedents.setdefault(refcat, {})[camp] = st.session_state[clau_widget]
 
-        c1, c2, c3 = st.columns([2, 2, 1])
+        c1, c2, c3, c4 = st.columns([2, 1.5, 1.3, 1.7])
         municipis = sorted({f["cod_muni"] for f in files})
         tria_muni = c1.multiselect("Filtra per municipi", municipis,
                                    default=municipis,
                                    format_func=nom_municipi,
                                    placeholder="Tria un o més municipis")
-        nomes_rustiques = c2.checkbox("Només finques rústiques", value=False)
+        nomes_rustiques = c2.checkbox("Només rústiques", value=False)
         nomes_pendents = c3.checkbox("Només sense nom", value=False)
+        amaga_public = c4.checkbox(
+            "Amaga dominis públics", value=True,
+            help="Amaga rius, barrancs, camins i carreteres (parcel·les sèrie "
+                 "9000). Són domini públic: no tenen propietari i no generen "
+                 "contracte. Desmarca-ho per revisar-les o incloure'n alguna.")
 
         visibles = [f for f in files if f["cod_muni"] in tria_muni]
         if nomes_rustiques:
             visibles = [f for f in visibles if f["tipo"] == "rustica"]
+        if amaga_public:
+            visibles = [f for f in visibles if not es_domini_public(f["refcat"])]
         if nomes_pendents:
             visibles = [f for f in visibles
                         if not (cedents.get(f["refcat"], {}).get("nom") or "").strip()]
@@ -852,6 +878,19 @@ with pas3:
         st.caption("Es mostren {} de {}.".format(
             len(tros), plural(len(visibles), "finca", "finques")))
 
+        # Si s'amaguen els dominis publics, avisem de quants n'hi ha (dins del
+        # filtre de municipis) perque el recompte no sembli que falten finques.
+        if amaga_public:
+            n_public = sum(1 for f in files
+                           if f["cod_muni"] in tria_muni and es_domini_public(f["refcat"]))
+            if n_public:
+                st.caption("🚧 {} {} de domini públic (rius, camins, carreteres) "
+                           "{} amagades i excloses de la generació. Desmarca "
+                           "«Amaga dominis públics» per revisar-les.".format(
+                               n_public,
+                               plural(n_public, "parcel·la", "parcel·les"),
+                               "està" if n_public == 1 else "estan"))
+
         # El nom de la finca (paratge) NOMES el dona el Cadastre: no es al GML.
         # Municipi, poligon i parcela surten de la referencia sense xarxa; el
         # nom, no. Aqui es descarrega DE COP per a totes les finques visibles
@@ -889,7 +928,7 @@ with pas3:
             rc = f["refcat"]
             dades = cedents.setdefault(rc, {
                 "nom": "", "tipus_document": "", "numero_document": "", "adreca": "",
-                "inclou": True,
+                "inclou": not es_domini_public(rc),
             })
 
             # Si ja existeix la fitxa al disc, en prenem el cedent com a punt de
@@ -961,6 +1000,11 @@ with pas3:
             # de la finca (l'usuari només va demanar treure el CODI de municipi).
             parts.append(rc)
             titol = "  ·  ".join(parts)
+            # Els dominis publics (serie 9000: rius, camins, carreteres) es
+            # marquen a la vista perque, si l'usuari els ha fet visibles, vegi
+            # d'un cop d'ull per que entren desmarcats.
+            if es_domini_public(rc):
+                titol = "🚧 " + titol + "  ·  DOMINI PÚBLIC (riu/camí, sense propietari)"
             with col_finca.expander(titol, expanded=False):
                 col_a, col_b = st.columns([3, 2])
                 with col_a:
