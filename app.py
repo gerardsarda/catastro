@@ -852,6 +852,39 @@ with pas3:
         st.caption("Es mostren {} de {}.".format(
             len(tros), plural(len(visibles), "finca", "finques")))
 
+        # El nom de la finca (paratge) NOMES el dona el Cadastre: no es al GML.
+        # Municipi, poligon i parcela surten de la referencia sense xarxa; el
+        # nom, no. Aqui es descarrega DE COP per a totes les finques visibles
+        # (les del filtre de municipis) que encara no s'han consultat mai, i es
+        # desa a la cache perque quedi en local i no calgui repetir-ho. Una
+        # finca ja consultada sense paratge ('NC' al Cadastre) no torna a
+        # sortir: no hi ha res mes a baixar.
+        def _cal_consultar(rc):
+            return (not os.path.exists(ruta_ficha(rc))
+                    and ca.datos_si_cacheado(rc) is None)
+
+        pendents = [f for f in visibles if _cal_consultar(f["refcat"])]
+        if pendents:
+            n = len(pendents)
+            st.caption("{} de les finques filtrades encara no tenen el nom "
+                       "descarregat del Cadastre (~{} s per baixar-les).".format(
+                           n, int(n * ca.PAUSA_S) + 1))
+            if st.button("Carrega els noms del Cadastre que falten ({})".format(n),
+                         help="Demana el paratge al Cadastre per a TOTES les "
+                              "finques dels municipis filtrats que encara no "
+                              "s'han consultat. Una petició cada {} s; es desa a "
+                              "la cache i no cal repetir-ho.".format(ca.PAUSA_S)):
+                barra = st.progress(0.0, "Consultant el Cadastre…")
+                for i, f in enumerate(pendents, 1):
+                    try:
+                        ca.datos_de_parcela(f["refcat"])
+                    except Exception:  # noqa: BLE001 - xarxa: seguim amb la resta
+                        pass
+                    barra.progress(i / n,
+                                   "Consultant el Cadastre… {}/{}".format(i, n))
+                ca.guardar_cache()
+                st.rerun()
+
         for f in tros:
             rc = f["refcat"]
             dades = cedents.setdefault(rc, {
