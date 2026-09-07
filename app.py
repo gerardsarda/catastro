@@ -24,6 +24,7 @@ import zipfile
 
 import pandas as pd
 import streamlit as st
+import streamlit.components.v1 as components
 
 # ---------------------------------------------------------------------------
 # RUTES I CARREGA DELS SCRIPTS EXISTENTS
@@ -342,6 +343,83 @@ def creuar(punts_latlon):
 # ---------------------------------------------------------------------------
 def ruta_ficha(refcat):
     return os.path.join(DIR_FICHAS, "finca_{}.json".format(refcat))
+
+
+@st.cache_data(show_spinner=False)
+def carregar_noms_municipis():
+    """Codi Catastro del municipi -> nom del municipi (comarques.json).
+
+    Nomes cobreix els municipis que hi ha al fitxer; per a la resta es fa
+    servir el codi tal qual, que sempre es correcte encara que menys llegible.
+    """
+    cami = os.path.join(RAIZ, "datos", "comarques.json")
+    try:
+        with open(cami, "r", encoding="utf-8") as fh:
+            d = json.load(fh)
+    except (ValueError, OSError):
+        return {}
+    return {k: v.get("municipi", "") for k, v in d.items()
+            if k != "_comentari" and isinstance(v, dict)}
+
+
+def nom_municipi(cod_muni):
+    """Nom del municipi si el coneixem; si no, el codi."""
+    return carregar_noms_municipis().get(cod_muni) or cod_muni
+
+
+def poligon_parcela_de_refcat(refcat):
+    """Polígon i parcel·la d'una rústica, tret de la mateixa referència.
+
+    El format rústic és 5 dígits + lletra + 3 de polígon + 5 de parcel·la
+    (43060A01100034 -> polígon 11, parcel·la 34). No cal API. A les urbanes
+    no hi ha aquest concepte i es torna buit.
+    """
+    if s04.es_rustica(refcat):
+        try:
+            return str(int(refcat[6:9])), str(int(refcat[9:14]))
+        except (ValueError, IndexError):
+            pass
+    return "", ""
+
+
+def info_capcalera(f):
+    """(municipi, nom_finca, polígon, parcel·la) per al títol del Pas 3.
+
+    Només fonts LOCALS, mai xarxa: la fitxa ja generada al disc, la cache del
+    Cadastre i la pròpia referència. El nom de la finca (paratge) només el dóna
+    el Cadastre: si encara no s'ha demanat, queda buit fins al Pas 4.
+    """
+    rc = f["refcat"]
+    municipi = nom_finca = poligon = parcela = ""
+
+    cami = ruta_ficha(rc)
+    if os.path.exists(cami):
+        try:
+            with open(cami, "r", encoding="utf-8") as fh:
+                fin = json.load(fh).get("finca") or {}
+            municipi = (fin.get("terme_municipal") or "").strip()
+            nom_finca = (fin.get("nom_finca") or "").strip()
+            poligon = str(fin.get("poligon") or "").strip()
+            parcela = str(fin.get("parcela") or "").strip()
+        except (ValueError, OSError):
+            pass
+
+    if not (municipi and nom_finca):
+        dc = ca.datos_si_cacheado(rc)
+        if dc:
+            municipi = municipi or (dc.get("municipio") or "").strip()
+            nom_finca = nom_finca or (dc.get("paraje") or "").strip()
+            poligon = poligon or str(dc.get("poligono") or "").strip()
+            parcela = parcela or str(dc.get("parcela") or "").strip()
+
+    if not poligon or not parcela:
+        pol, par = poligon_parcela_de_refcat(rc)
+        poligon = poligon or pol
+        parcela = parcela or par
+
+    if not municipi:
+        municipi = nom_municipi(f["cod_muni"])
+    return municipi, nom_finca, poligon, parcela
 
 
 def obtenir_ficha(fila, comunes):
@@ -728,6 +806,7 @@ with pas3:
         municipis = sorted({f["cod_muni"] for f in files})
         tria_muni = c1.multiselect("Filtra per municipi", municipis,
                                    default=municipis,
+                                   format_func=nom_municipi,
                                    placeholder="Tria un o més municipis")
         nomes_rustiques = c2.checkbox("Només finques rústiques", value=False)
         nomes_pendents = c3.checkbox("Només sense nom", value=False)
@@ -837,10 +916,18 @@ with pas3:
                                on_change=_desa_camp,
                                args=(rc, "inclou", claus["inclou"]))
 
-            titol = "{}  ·  municipi {}  ·  {}  ·  {:,} m²".format(
-                rc, f["cod_muni"],
-                "rústica" if f["tipo"] == "rustica" else "urbana",
-                f["area_computada_m2"]).replace(",", ".")
+            municipi, nom_finca, poligon, parcela = info_capcalera(f)
+            parts = [municipi or "—"]
+            if nom_finca:
+                parts.append(nom_finca)
+            if poligon:
+                parts.append("polígon {}".format(poligon))
+            if parcela:
+                parts.append("parcel·la {}".format(parcela))
+            # La referència cadastral es manté al final: és l'identificador únic
+            # de la finca (l'usuari només va demanar treure el CODI de municipi).
+            parts.append(rc)
+            titol = "  ·  ".join(parts)
             with col_finca.expander(titol, expanded=False):
                 col_a, col_b = st.columns([3, 2])
                 with col_a:
@@ -962,11 +1049,23 @@ with pas4:
 if st.session_state.get("_nav_to") is not None:
     idx = st.session_state["_nav_to"]
     st.session_state["_nav_to"] = None
-    st.markdown(f"""
+    # Cal components.html (un iframe real): st.markdown filtra les etiquetes
+    # <script> i el JS mai s'executava; per això el botó "Següent" no feia res.
+    # El nonce força que l'iframe es torni a crear cada cop i el codi es dispari.
+    nonce = st.session_state.get("_nav_nonce", 0) + 1
+    st.session_state["_nav_nonce"] = nonce
+    components.html("""
 <script>
 (function() {{
-    var tabs = window.parent.document.querySelectorAll('[data-testid="stTab"]');
-    if (tabs && tabs.length > {idx}) {{ tabs[{idx}].click(); }}
+    var doc = window.parent.document;
+    var tabs = doc.querySelectorAll('button[data-baseweb="tab"]');
+    if (!tabs.length) {{
+        tabs = doc.querySelectorAll('[data-testid="stTab"]');
+    }}
+    if (tabs && tabs.length > {idx}) {{
+        tabs[{idx}].click();
+    }}
+    /* nonce {nonce} */
 }})();
 </script>
-""", unsafe_allow_html=True)
+""".format(idx=idx, nonce=nonce), height=0)

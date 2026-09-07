@@ -123,6 +123,19 @@ def _primer_bi(res):
     return {}, None, None
 
 
+def datos_si_cacheado(refcat):
+    """Como datos_de_parcela, pero SOLO si la referencia ya esta en cache.
+
+    Devuelve None sin tocar la red cuando no la tenemos. Lo usa la interfaz
+    para rellenar cabeceras al vuelo sin disparar cientos de peticiones: si el
+    dato ya se pidio antes (o lo trajo el script 06), se aprovecha; si no, se
+    deja en blanco hasta que se genere la ficha en el Paso 4.
+    """
+    if refcat not in _abrir_cache():
+        return None
+    return datos_de_parcela(refcat)
+
+
 def datos_de_parcela(refcat):
     """Devuelve un dict con los datos del Catastro para una referencia.
 
