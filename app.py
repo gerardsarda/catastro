@@ -899,6 +899,13 @@ with pas3:
         # finca ja consultada sense paratge ('NC' al Cadastre) no torna a
         # sortir: no hi ha res mes a baixar.
         def _cal_consultar(rc):
+            # Nomes te sentit demanar el nom (paratge) a les rustiques privades.
+            # Les urbanes no tenen paratge (es un camp exclusiu del rustic) i els
+            # dominis publics (serie 9000: rius, camins) ni tenen propietari ni
+            # generen contracte. Consultar-los seria fer centenars de peticions
+            # al Cadastre per a res, i el boto no marxaria mai.
+            if not s04.es_rustica(rc) or es_domini_public(rc):
+                return False
             return (not os.path.exists(ruta_ficha(rc))
                     and ca.datos_si_cacheado(rc) is None)
 
